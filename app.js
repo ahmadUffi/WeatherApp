@@ -20,7 +20,7 @@ async function fetchData(api, param) {
 
 async function start(search = "indonesia") {
   const apiURL = await fetchData(
-    `http://api.weatherapi.com/v1/current.json?key=5209e4908b634703875140521243007&q=${search}&aqi=no`
+    `https://api.weatherapi.com/v1/current.json?key=5209e4908b634703875140521243007&q=${search}&aqi=no`
   );
   // api
   const location = await apiURL.location;
