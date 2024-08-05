@@ -48,7 +48,6 @@ async function start(search = "indonesia") {
     case "Partly Cloudy":
       weather_background.src = "assets/vid/cluody.mp4";
       break;
-
     default:
       weather_background.src = "assets/vid/rain.mp4";
 
@@ -85,14 +84,25 @@ async function start(search = "indonesia") {
 
 // search
 
+var coocies = localStorage.getItem("ragion");
+if (!coocies) {
+  localStorage.setItem("ragion", "indonesia");
+}
+var coocies = localStorage.getItem("ragion");
+
 const form_search = document.querySelector(".form");
 const input_search = document.getElementById("search");
 
 form_search.addEventListener("submit", (e) => {
   e.preventDefault();
   let search = input_search.value;
-  start(search);
+  localStorage.setItem("ragion", search);
+  coocies = localStorage.getItem("ragion");
+  start(coocies);
   input_search.value = "";
 });
 
-start();
+setInterval(() => {
+  start(coocies);
+}, 50000);
+start(coocies);
